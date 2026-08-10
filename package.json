@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "dependencies": {
+    "@hookform/resolvers": "^5.7.1",
     "@refinedev/cli": "^2.16.48",
     "@refinedev/core": "^5.0.8",
     "@refinedev/devtools": "^2.0.1",
@@ -14,6 +15,7 @@
     "@refinedev/rest": "^2.1.0",
     "@tailwindcss/vite": "^4.1.8",
     "@tanstack/react-table": "^8.2.6",
+    "axios": "^1.19.0",
     "clsx": "^2.1.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
