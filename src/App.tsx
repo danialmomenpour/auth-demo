@@ -3,6 +3,7 @@ import {BrowserRouter} from "react-router";
 import "./App.css";
 import {dataProvider} from "./providers/data";
 import {Routers} from "./Router/Router.tsx";
+import {AuthProvider} from "./context/authContext.tsx";
 
 function App() {
     return (
@@ -11,7 +12,9 @@ function App() {
                 dataProvider={dataProvider}
                 resources={[]}
             >
-                <Routers/>
+                <AuthProvider>
+                    <Routers/>
+                </AuthProvider>
             </Refine>
         </BrowserRouter>
     );
