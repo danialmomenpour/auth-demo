@@ -44,20 +44,19 @@ const LoginPage = () => {
                 {
                     username: data?.username,
                     password: data?.password,
-                    expiresInMins: 1, // defaults to 60
+                    expiresInMins: 60, // defaults to 60
                 },
             )
             const accessToken = loginResponse?.data?.accessToken;
-            const refreshToken = loginResponse?.data?.refreshToken;
 
             const userInfoResponse = await axios.get(GET_USER_URL, {
                 headers: {
                     Authorization: `Bearer ${accessToken}`,
                 }
             })
-            const userData = userInfoResponse.data;
 
-            login(userData, accessToken, refreshToken);
+            const userData = userInfoResponse.data;
+            login(userData, accessToken);
             navigate(from, {replace: true});
         } catch (error: unknown) {
             if (isAxiosError(error)) {
