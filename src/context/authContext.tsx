@@ -1,6 +1,6 @@
 import {createContext, type ReactNode, useContext, useState,} from "react";
 
-type UserRole = "admin" | "editor" | "viewer";
+export type UserRole = 'admin' | 'moderator' | 'user';
 
 export type User = {
     id: number;

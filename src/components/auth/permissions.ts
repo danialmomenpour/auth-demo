@@ -1,12 +1,11 @@
-
-type Role = 'admin' | 'moderator' | 'user';
+import {UserRole} from "../../context/authContext.tsx";
 
 export type Permission =
     | "products:read"
     | "products:update"
     | "products:delete";
 
-const rolePermissions: Record<Role, Permission[]> = {
+const rolePermissions: Record<UserRole, Permission[]> = {
     admin: [
         "products:read",
         "products:update",
@@ -26,7 +25,7 @@ const rolePermissions: Record<Role, Permission[]> = {
 // auth/permissions.ts
 
 export const hasPermission = (
-    role: Role | undefined,
+    role: UserRole | undefined,
     permission: Permission,
 ): boolean => {
     if (!role) {

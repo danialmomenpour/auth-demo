@@ -1,34 +1,35 @@
-import {useAuth} from "../../../context/authContext.tsx";
+import {useAuth, type UserRole} from "../../../context/authContext.tsx";
 import {Navigate, Outlet, useLocation} from "react-router";
 
-type Role = 'admin' | 'moderator' | 'user';
-
 type AllowedRoles = {
-    allowedRoles: Role[];
-}
+    allowedRoles: UserRole[];
+};
 
 const RequireAuth = ({allowedRoles}: AllowedRoles) => {
-
     const {user} = useAuth();
     const location = useLocation();
 
-    return (
-        allowedRoles?.includes(user?.role)
-            ? <Outlet/>
-            : user
-                ?
-                <Navigate
-                    to="/unauthorized"
-                    replace={true}
-                    state={{from: location}}
-                />
-                : <Navigate
-                    to="/login"
-                    replace={true}
-                    state={{from: location}}
-                />
-    );
-};
+    if (!user) {
+        return (
+            <Navigate
+                to="/login"
+                replace
+                state={{from: location}}
+            />
+        );
+    }
 
+    if (!allowedRoles.includes(user.role)) {
+        return (
+            <Navigate
+                to="/unauthorized"
+                replace
+                state={{from: location}}
+            />
+        );
+    }
+
+    return <Outlet />;
+};
 
 export default RequireAuth;
