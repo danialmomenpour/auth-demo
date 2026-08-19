@@ -6,6 +6,7 @@ import Layout from "../components/layout";
 import RequireAuth from "../components/auth/RequireAuth";
 import UsersPage from "../pages/users";
 import UnauthorizedPage from "../pages/unauthorized";
+import ProductDetailsPage from "../pages/products/ProductDetails";
 
 
 export const Routers = () => {
@@ -21,6 +22,7 @@ export const Routers = () => {
                 {/*protected routes*/}
                 <Route element={<RequireAuth allowedRoles={["admin", "moderator", "user"]}/>}>
                     <Route path={"/products"} element={<ProductsPage/>}/>
+                    <Route path={"/product/:id"} element={<ProductDetailsPage/>}/>
                 </Route>
 
                 <Route element={<RequireAuth allowedRoles={["admin"]}/>}>
