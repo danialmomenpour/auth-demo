@@ -26,7 +26,6 @@ export const Routers = () => {
                 <Route element={<RequireAuth allowedRoles={["admin"]}/>}>
                     <Route path={"/users"} element={<UsersPage/>}/>
                 </Route>
-
             </Route>
         </Routes>
     );

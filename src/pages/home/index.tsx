@@ -14,6 +14,7 @@ const HomePage = () => {
             <Link to={"/users"} className={"text-blue-500"}>
                 users
             </Link>
+
         </div>
     );
 };

@@ -7,13 +7,14 @@ type RefreshResponse = {
 };
 
 export const useRefreshToken = () => {
-    const {setAccessToken} = useAuth();
+    const {setAccessToken , refreshToken} = useAuth();
 
     const refresh = useCallback(async (): Promise<string> => {
         const response = await axios.post<RefreshResponse>(
             "/auth/refresh",
             {
-                expiresInMins: 7 * 24 * 60,
+                refreshToken: refreshToken,
+                expiresInMins: 1,
             },
             {
                 withCredentials: true,
